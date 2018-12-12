@@ -1,0 +1,13 @@
+<div>
+
+  <div *ngFor="let rec of recommendations">
+    <p style="text-align: center">{{ rec.Title }} ({{rec.imdbRating}}/10)</p>
+    <div *ngIf="rec.Poster" class="d-flex align-items-center justify-content-center">
+        <img [src]="rec.Poster" ngSwipeLeft="onReject()">
+    </div>
+    <p style="text-align: center">{{ rec.Plot }}</p>
+    <button (click)="onAccept()" type="button" class="btn btn-outline-success">Accept</button>
+    <button (click)="onReject()" type="button" class="btn btn-outline-danger">Reject</button>
+  </div>
+
+</div>
