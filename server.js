@@ -6,7 +6,6 @@ const morgan = require('morgan');
 const Movie = require('./databaseConfig');
 const requisition = require('requisition');
 
-const postApi = 'http://jsonplaceholder.typicode.com'
 let error;
 
 app.use(express.json());
