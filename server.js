@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, 'dist/movie')));
 
 // Catch all other routes request and return it to the index
 
-app.get('/*', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/movie/index.html'));
 });
 
