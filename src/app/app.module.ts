@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +13,8 @@ import { MoviesComponent } from './movies/movies.component';
 
 import { RecommendationsService } from './recommendations.service';
 import { MoviesService } from './movies.service';
+
+import { voteReducer } from './reducers/vote.reducer';
 
 
 @NgModule({
@@ -25,6 +28,7 @@ import { MoviesService } from './movies.service';
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    StoreModule.forRoot({ vote: voteReducer }),
     StoreDevtoolsModule.instrument({
       maxAge: 10
     })

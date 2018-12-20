@@ -7,15 +7,18 @@ import { MoviesComponent } from './movies/movies.component';
 const routes : Routes = [
 
     {
-      path: '', redirectTo: 'recommendations',
+      path: '', 
+      redirectTo: 'recommendations',
       pathMatch: 'full'
     },
-  
     {
       path: 'recommendations', component: RecommendationsComponent
     },
     {
       path: 'movies', component: MoviesComponent
+    },
+    { 
+      path: '**', redirectTo: '/' 
     }
   
   ];

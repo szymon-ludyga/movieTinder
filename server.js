@@ -24,8 +24,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/recommendations', async (req, res, next) => {
-    
-    Movie.find({ Poster: { $not: /N\/A/ }}, null, {sort: {'item.Title': 1} }, function(error, data){
+
+    Movie.find({}, null, {sort: { 'Votes': -1}}, function(error, data){
         try 
         {
             if(error) throw error;
@@ -42,8 +42,7 @@ app.get('/recommendations', async (req, res, next) => {
 
 app.get('/movies', function(req, res, next){
 
-		
-    Movie.find({}, null, {sort: {'item.Title': 1}}, function(error, data){
+    Movie.find({}, null, {sort: { 'Votes': -1}}, function(error, data){
         try 
         {
             if(error) throw error;
@@ -58,6 +57,34 @@ app.get('/movies', function(req, res, next){
     
 });
 
+app.put('/recommendations', async function(req, res, next){
+
+    console.log('req.body', req.body);
+
+    if(req.body.id)
+    {	
+        Movie.findByIdAndUpdate(req.body.id, { $inc: { Votes: req.body.vote }}, function(error, data) {
+            try 
+            {
+                if (error) throw error;
+                res.json(data);
+            }
+            catch(error)
+            {
+                error.status = 500;
+                next(error);
+            }
+            
+        });
+    }
+    else
+    {
+        error = new Error('Unprocessable Entity');
+        error.status = 422;
+        next(error);
+    }
+
+});
 
 // 1. passing request body in post method (validating presence of req.body)
 // 2. getting movie details from ombdApi based on request body
@@ -72,7 +99,7 @@ app.post('/movies', async function(req, res, next){
         const subrequest = await requisition(`http://www.omdbapi.com/?t=${req.body.title}&apikey=${process.env.API_KEY}`);
         const movieObj = await subrequest.json();
 
-        if(!movieObj.Error && movieObj.Title)
+        if(!movieObj.Error && movieObj.Poster != 'N/A')
         {
             Movie({
                 Title: movieObj.Title,
@@ -99,6 +126,7 @@ app.post('/movies', async function(req, res, next){
                 BoxOffice: movieObj.BoxOffice,
                 Production: movieObj.Production,
                 Website: movieObj.Website,
+                Votes: 0
             }).save(function(error, data) {
                 try 
                 {

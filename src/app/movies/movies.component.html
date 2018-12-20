@@ -10,6 +10,7 @@
         <th scope="col">Id</th>
         <th scope="col">Summary</th>
         <th scope="col">Rating</th>
+        <th scope="col">Votes</th>
         <th scope="col"></th>
       </tr>
     </thead>
@@ -19,6 +20,7 @@
         <td>{{ movie._id }}</td>
         <td>{{ movie.Plot }}</td>
         <td>({{ movie.imdbRating }}/10)</td>
+        <td>{{ movie.Votes }}</td>
         <td>
           <button (click)="onDelete(movie._id)" class="btn btn-danger" title="Delete"><i class="fa fa-fw fa-trash"></i></button>
         </td>

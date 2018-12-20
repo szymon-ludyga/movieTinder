@@ -33,8 +33,11 @@ const movieSchema = new mongoose.Schema({
 	DVD: String,
 	BoxOffice: String,
 	Production: String,
-	Website: String
+	Website: String,
+	Votes: Number
 });
+
+// preventing from adding the same movie
 
 movieSchema.plugin(uniqueValidator);
 

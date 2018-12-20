@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../movies.service';
 import { NgForm } from '@angular/forms';
 
+
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
@@ -9,9 +10,10 @@ import { NgForm } from '@angular/forms';
 })
 export class MoviesComponent implements OnInit {
 
-  movies: any = [];
-
   constructor(private moviesService: MoviesService) { }
+
+  movies: any = [];
+  ids: string[] = [];
 
   ngOnInit() {
 
@@ -25,8 +27,18 @@ export class MoviesComponent implements OnInit {
     this.moviesService.addMovie(form.value.searchedMovie);
   }
 
-  onDelete(movieId) {
+  onDelete(movieId: string) {
+    // this.ids = this.arrayRemove(this.ids, movieId);
     this.moviesService.deleteMovie(movieId);
+    // console.log('IDS: ', this.ids);
+  }
+
+  arrayRemove(arr, value) {
+
+    return arr.filter(function(ele){
+        return ele != value;
+    });
+ 
   }
 
 }
