@@ -22,6 +22,7 @@ export class RecommendationsComponent implements OnInit {
   vote: Observable<Vote>;
 
   isLoading = false;
+  isSwiped = true;
   voteCount: number = 0;
   movies: any;
 

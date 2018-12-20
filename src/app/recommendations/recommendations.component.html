@@ -11,7 +11,7 @@
           <div class="text-center mx-auto mt-4 col-sm-5 col-md-4">
             {{ rec.title }} ({{rec.rating}}/10)
           </div>
-          <img [src]="rec.img_url" ngSwipeRight="onReject()" ngSwipeLeft="onReject()" class="mx-auto d-block rounded img-fluid mt-4">
+          <img [src]="rec.img_url" (swipeleft)="onReject()" (swiperight)="onReject()" class="mx-auto d-block rounded img-fluid mt-4">
           <div class="text-center mx-auto mt-4 col-sm-5 col-md-4">
             {{ rec.plot }}
           </div>
