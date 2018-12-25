@@ -12,11 +12,9 @@ export class RecommendationsService {
     return this.http.get('/recommendations').pipe(res => res, error => error);
   }
 
-  updateVotes(vote, id) {
-    return this.http.put<any>('/recommendations', {vote: vote, id: id}, { responseType: 'json' })
-    .subscribe(data => {
-        console.log(data);
-    },
+  updateVotes(vote: number, id: string) {
+    return this.http.put('/recommendations', {vote: vote, id: id}, { responseType: 'json' })
+    .subscribe(data => data,
     error => {
       console.log(error);
     });

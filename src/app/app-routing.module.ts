@@ -1,8 +1,9 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
  
-import { RecommendationsComponent } from './recommendations/recommendations.component';
-import { MoviesComponent } from './movies/movies.component';
+import { RecommendationsComponent } from './components/recommendations/recommendations.component';
+import { MoviesComponent } from './components/movies/movies.component';
+import { SuccessComponent } from './components/success/success.component';
 
 const routes : Routes = [
 
@@ -17,15 +18,18 @@ const routes : Routes = [
     {
       path: 'movies', component: MoviesComponent
     },
+    // { 
+    //   path: '**', redirectTo: 'recommendations' 
+    // },
     { 
-      path: '**', redirectTo: '/' 
+      path: 'success', component: SuccessComponent
     }
   
   ];
 
 @NgModule({
 imports: [
-    RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})
+    RouterModule.forRoot(routes)
 ],
 exports: [RouterModule]
 })

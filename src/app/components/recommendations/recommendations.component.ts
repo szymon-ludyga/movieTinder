@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { RecommendationsService } from '../recommendations.service';
+import { RecommendationsService } from '../../services/recommendations/recommendations.service';
 
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { Vote } from '../reducers/vote.model';
-import * as VoteActions from '../reducers/vote.actions';
+import { Vote } from '../../reducers/vote.model';
+import * as VoteActions from '../../reducers/vote.actions';
 
 
 interface AppState {
@@ -41,11 +41,14 @@ export class RecommendationsComponent implements OnInit {
   async getMovies() {
 
     this.movies = await this.recommendationsService.getAllRecommendations().toPromise();
-    this.store.dispatch(new VoteActions.ChangeMovie(
-      this.movies[0].Title, 
-      this.movies[0].Poster, 
-      this.movies[0].imdbRating, 
-      this.movies[0].Plot));
+    if(this.movies.length > 0)
+    {
+      this.store.dispatch(new VoteActions.ChangeMovie(
+        this.movies[0].title, 
+        this.movies[0].img_url, 
+        this.movies[0].rating, 
+        this.movies[0].summary));
+    }
     this.isLoading = false;
     
   }
@@ -53,10 +56,10 @@ export class RecommendationsComponent implements OnInit {
   getNextMovie() {
 
     this.store.dispatch(new VoteActions.ChangeMovie(
-      this.movies[0].Title, 
-      this.movies[0].Poster, 
-      this.movies[0].imdbRating, 
-      this.movies[0].Plot));
+      this.movies[0].title, 
+      this.movies[0].img_url, 
+      this.movies[0].rating, 
+      this.movies[0].summary));
     this.isLoading = false;
 
   }

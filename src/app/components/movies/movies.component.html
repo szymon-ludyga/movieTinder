@@ -1,9 +1,9 @@
-<form class="form-inline" (ngSubmit)="onAdd(form)" #form="ngForm">
+<form class="form-inline mt-5" (ngSubmit)="onAdd(form)" #form="ngForm">
   <input #searchedMovie="ngModel" ngModel type="text" class="form-control form-control-lg" name="searchedMovie" placeholder="Add movie to database..." style="width: 80%" required>
   <button type="submit" class="btn btn-primary btn-lg" style="width: 20%">Add movie</button>
 </form>
 
-<table class="table table-striped mt-5">
+<table *ngIf="movies.length > 0" class="table table-striped mt-5">
     <thead>
       <tr>
         <th scope="col">Title</th>
@@ -16,11 +16,11 @@
     </thead>
     <tbody>
       <tr *ngFor="let movie of movies">
-        <td>{{ movie.Title }}</td>
+        <td>{{ movie.title }}</td>
         <td>{{ movie._id }}</td>
-        <td>{{ movie.Plot }}</td>
-        <td>({{ movie.imdbRating }}/10)</td>
-        <td>{{ movie.Votes }}</td>
+        <td>{{ movie.summary }}</td>
+        <td>({{ movie.rating }}/10)</td>
+        <td>{{ movie.votes }}</td>
         <td>
           <button (click)="onDelete(movie._id)" class="btn btn-danger" title="Delete"><i class="fa fa-fw fa-trash"></i></button>
         </td>

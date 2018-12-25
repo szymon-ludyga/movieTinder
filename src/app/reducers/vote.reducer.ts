@@ -19,12 +19,11 @@ const newState = (state, newData) => {
 
 /// Reducer function
 export function voteReducer(state: Vote = defaultState, action: Action) {
-//   console.log(action.type, state)
 
 	switch (action.type) {
 
         case VoteActions.CHANGE_MOVIE:
-            return newState(state, { title: action.title, plot: action.plot, rating: action.rating, img_url: action.img_url });
+            return newState(state, { title: action.title, img_url: action.img_url, rating: action.rating, plot: action.plot });
 
   		default:
   			return state;

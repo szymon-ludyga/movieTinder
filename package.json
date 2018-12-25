@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --aot --prod"
+    "postinstall": "ng build --aot --prod",
+    "dev": "webpack"
   },
   "private": true,
   "dependencies": {
@@ -26,6 +27,7 @@
     "@ngrx/core": "^1.2.0",
     "@ngrx/store": "^6.1.2",
     "@ngrx/store-devtools": "^6.1.2",
+    "@ngtools/webpack": "^7.1.4",
     "@trademe/ng-defer-load": "^2.0.0",
     "bootstrap": "^4.1.3",
     "core-js": "^2.5.4",
@@ -49,7 +51,10 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.5.0",
+    "concurrently": "^4.1.0",
+    "copy-webpack-plugin": "^4.6.0",
     "enhanced-resolve": "^3.3.0",
+    "html-webpack-plugin": "^3.2.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~3.1.1",
@@ -60,6 +65,8 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.1.6"
+    "typescript": "~3.1.6",
+    "webpack": "^4.28.1",
+    "webpack-cli": "^3.1.2"
   }
 }

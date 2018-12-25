@@ -17,17 +17,15 @@ export class MoviesService {
 
   addMovie(movieTitle)
   {
-    return this.http.post<any>('/movies', {title: movieTitle}, { responseType: 'json' })
+    return this.http.post('/movies', {title: movieTitle}, { responseType: 'json' })
     .pipe()
-    .subscribe(movie => this.router.navigate(['../recommendations']), error => console.log(error));
+    .subscribe(data => this.router.navigate(['../success']), error => console.log(error));
   }
 
   deleteMovie(movieId) 
   {
-    return this.http.delete('/movies/' + movieId, { responseType: 'json' }).subscribe(data => {
-      console.log(data);
-      // window.location.reload();
-    },
+    return this.http.delete('/movies/' + movieId, { responseType: 'json' }).subscribe(data => 
+      this.router.navigate(['../success']),
     error => {
       console.log(error);
     });

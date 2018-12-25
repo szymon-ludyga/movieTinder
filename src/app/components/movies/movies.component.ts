@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MoviesService } from '../movies.service';
+import { MoviesService } from '../../services/movies/movies.service';
 import { NgForm } from '@angular/forms';
 
 
@@ -28,17 +28,7 @@ export class MoviesComponent implements OnInit {
   }
 
   onDelete(movieId: string) {
-    // this.ids = this.arrayRemove(this.ids, movieId);
     this.moviesService.deleteMovie(movieId);
-    // console.log('IDS: ', this.ids);
-  }
-
-  arrayRemove(arr, value) {
-
-    return arr.filter(function(ele){
-        return ele != value;
-    });
- 
   }
 
 }

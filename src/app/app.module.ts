@@ -10,20 +10,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { RecommendationsComponent } from './recommendations/recommendations.component';
-import { MoviesComponent } from './movies/movies.component';
+import { RecommendationsComponent } from './components/recommendations/recommendations.component';
+import { MoviesComponent } from './components/movies/movies.component';
 
-import { RecommendationsService } from './recommendations.service';
-import { MoviesService } from './movies.service';
+import { RecommendationsService } from './services/recommendations/recommendations.service';
+import { MoviesService } from './services/movies/movies.service';
 
 import { voteReducer } from './reducers/vote.reducer';
+import { SuccessComponent } from './components/success/success.component';
+import { SuccessService } from './services/success/success.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     RecommendationsComponent,
-    MoviesComponent
+    MoviesComponent,
+    SuccessComponent
   ],
   imports: [
     BrowserModule,
@@ -36,8 +39,14 @@ import { voteReducer } from './reducers/vote.reducer';
       maxAge: 10
     })
   ],
-  providers: [RecommendationsService, MoviesService],
-  bootstrap: [AppComponent]
+  providers: [RecommendationsService, MoviesService, SuccessService],
+  bootstrap: [AppComponent],
+  entryComponents:
+  [
+    RecommendationsComponent,
+    MoviesComponent,
+    SuccessComponent
+  ]
 })
 
 export class AppModule { }

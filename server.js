@@ -14,17 +14,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(morgan('dev'));
 
-app.use(express.static(path.join(__dirname, 'dist/movie')));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 // Catch all other routes request and return it to the index
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dist/movie/index.html'));
+    res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
 app.get('/recommendations', async (req, res, next) => {
 
-    Movie.find({}, null, {sort: { 'Votes': -1}}, function(error, data){
+    Movie.find({}, null, {sort: { 'votes': -1}}, function(error, data){
         try 
         {
             if(error) throw error;
@@ -41,7 +41,7 @@ app.get('/recommendations', async (req, res, next) => {
 
 app.get('/movies', function(req, res, next){
 
-    Movie.find({}, null, {sort: { 'Votes': -1}}, function(error, data){
+    Movie.find({}, null, {sort: { 'votes': -1}}, function(error, data){
         try 
         {
             if(error) throw error;
@@ -62,7 +62,7 @@ app.put('/recommendations', async function(req, res, next){
 
     if(req.body.id)
     {	
-        Movie.findByIdAndUpdate(req.body.id, { $inc: { Votes: req.body.vote }}, function(error, data) {
+        Movie.findByIdAndUpdate(req.body.id, { $inc: { votes: req.body.vote }}, function(error, data) {
             try 
             {
                 if (error) throw error;
@@ -101,31 +101,11 @@ app.post('/movies', async function(req, res, next){
         if(!movieObj.Error && movieObj.Poster != 'N/A')
         {
             Movie({
-                Title: movieObj.Title,
-                Year: movieObj.Year,
-                Rated: movieObj.Rated,
-                Released: movieObj.Released,
-                Runtime: movieObj.Runtime,
-                Genre: movieObj.Genre,
-                Director: movieObj.Director,
-                Writer: movieObj.Writer,
-                Actors: movieObj.Actors,
-                Plot: movieObj.Plot,
-                Language: movieObj.Language,
-                Country: movieObj.Country,
-                Awards: movieObj.Awards,
-                Poster: movieObj.Poster,
-                Ratings: movieObj.Ratings,
-                Metascore: movieObj.Metascore,
-                imdbRating: movieObj.imdbRating,
-                imdbVotes: movieObj.imdbVotes,
-                imdbID: movieObj.imdbID,
-                Type: movieObj.Type,
-                DVD: movieObj.DVD,
-                BoxOffice: movieObj.BoxOffice,
-                Production: movieObj.Production,
-                Website: movieObj.Website,
-                Votes: 0
+                title: movieObj.Title,
+                summary: movieObj.Plot,
+                img_url: movieObj.Poster,
+                rating: movieObj.imdbRating,
+                votes: 0
             }).save(function(error, data) {
                 try 
                 {

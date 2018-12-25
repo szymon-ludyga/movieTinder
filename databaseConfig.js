@@ -10,31 +10,11 @@ mongoose.connect(process.env.DB_URL);
 // defining a schema
 
 const movieSchema = new mongoose.Schema({
-	Title: { type: String, required: true, unique: true },
-	Year: String,
-	Rated: String,
-	Released: String,
-	Runtime: String,
-	Genre: String,
-	Director: String,
-	Writer: String,
-	Actors: String,
-	Plot: String,
-	Language: String,
-	Country: String,
-	Awards: String,
-	Poster: String,
-	Ratings: Array,
-	Metascore: String,
-	imdbRating: String,
-	imdbVotes: String,
-	imdbID: String,
-	Type: String,
-	DVD: String,
-	BoxOffice: String,
-	Production: String,
-	Website: String,
-	Votes: Number
+	title: { type: String, required: true, unique: true },
+	summary: String,
+	img_url: String,
+	rating: String,
+	votes: Number
 });
 
 // preventing from adding the same movie
