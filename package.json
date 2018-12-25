@@ -37,6 +37,7 @@
     "mongoose": "^5.3.15",
     "mongoose-unique-validator": "^2.0.2",
     "morgan": "^1.9.1",
+    "node": "^11.5.0",
     "popper.js": "^1.14.6",
     "requisition": "^1.7.0",
     "rxjs": "~6.3.3",
