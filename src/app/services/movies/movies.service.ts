@@ -15,14 +15,14 @@ export class MoviesService {
     return this.http.get('/movies').pipe(movies => movies);
   }
 
-  addMovie(movieTitle)
+  addMovie(movieTitle: string)
   {
     return this.http.post('/movies', {title: movieTitle}, { responseType: 'json' })
     .pipe()
     .subscribe(data => this.router.navigate(['../success']), error => console.log(error));
   }
 
-  deleteMovie(movieId) 
+  deleteMovie(movieId: string) 
   {
     return this.http.delete('/movies/' + movieId, { responseType: 'json' }).subscribe(data => 
       this.router.navigate(['../success']),

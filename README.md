@@ -31,7 +31,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 1. cleaning files
 2. Reloading page
-3. put<any>, post<any?> what to do here?
 4. add models
 5. animations
 6. movies page adjust to phone screen
+7. tests
