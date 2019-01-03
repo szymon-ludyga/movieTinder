@@ -18,9 +18,6 @@ const routes : Routes = [
     {
       path: 'movies', component: MoviesComponent
     },
-    // { 
-    //   path: '**', redirectTo: 'recommendations' 
-    // },
     { 
       path: 'success', component: SuccessComponent
     }
@@ -29,7 +26,7 @@ const routes : Routes = [
 
 @NgModule({
 imports: [
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})
 ],
 exports: [RouterModule]
 })

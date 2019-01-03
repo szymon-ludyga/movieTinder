@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +34,7 @@ import { SuccessService } from './services/success/success.service';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    RouterModule,
     StoreModule.forRoot({ vote: voteReducer }),
     StoreDevtoolsModule.instrument({
       maxAge: 10

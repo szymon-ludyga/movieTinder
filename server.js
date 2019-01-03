@@ -16,8 +16,6 @@ app.use(morgan('dev'));
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
-// Catch all other routes request and return it to the index
-
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
@@ -58,8 +56,6 @@ app.get('/movies', function(req, res, next){
 
 app.put('/recommendations', async function(req, res, next){
 
-    console.log('req.body', req.body);
-
     if(req.body.id)
     {	
         Movie.findByIdAndUpdate(req.body.id, { $inc: { votes: req.body.vote }}, function(error, data) {
@@ -85,13 +81,7 @@ app.put('/recommendations', async function(req, res, next){
 
 });
 
-// 1. passing request body in post method (validating presence of req.body)
-// 2. getting movie details from ombdApi based on request body
-// 3. saving movie details to mongodb database
-
 app.post('/movies', async function(req, res, next){
-
-    console.log('req.body', req.body);
 
     if(req.body.title)
     {
@@ -137,8 +127,6 @@ app.post('/movies', async function(req, res, next){
 });
 
 app.delete('/movies/:id', function(req, res, next) {
-
-    // delete the movie from mongodb
 
     if(req.params.id)
     {

@@ -20,7 +20,7 @@ interface AppState {
 export class RecommendationsComponent implements OnInit {
 
   vote: Observable<Vote>;
-
+  text: string = 'recommendations page';
   isLoading = false;
   isSwiped = true;
   voteCount: number = 0;

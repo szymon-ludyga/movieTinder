@@ -2,13 +2,19 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MoviesComponent } from './movies.component';
 
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+import { RouterTestingModule } from '@angular/router/testing';
+
 describe('MoviesComponent', () => {
   let component: MoviesComponent;
   let fixture: ComponentFixture<MoviesComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MoviesComponent ]
+      declarations: [ MoviesComponent ],
+      imports: [ FormsModule, HttpClientModule, RouterTestingModule ]
     })
     .compileComponents();
   }));
@@ -22,4 +28,9 @@ describe('MoviesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have as text: "movies page"', () => {
+    expect(component.text).toEqual('movies page');
+  });
+
 });

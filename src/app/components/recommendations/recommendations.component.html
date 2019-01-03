@@ -1,6 +1,6 @@
 <div class="container">
 
-  <div *ngIf="isLoading" class="text-center mx-auto mt-4 col-sm-5 col-md-4">
+  <div *ngIf="isLoading" class="text-center mx-auto mt-2 col-sm-5 col-md-4">
     <p class="loading-message"><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i> Loading next movie...
     </p>
   </div>
@@ -8,17 +8,17 @@
   <div *ngIf="!isLoading" class="d-flex justify-content-center">
 
     <div *ngIf="vote | async as rec" class="w-100">
-          <div class="text-center mx-auto mt-4 col-sm-5 col-md-4">
+          <div class="text-center mx-auto mt-2 col-sm-5 col-md-4">
             {{ rec.title }} ({{rec.rating}}/10)
           </div>
           
-          <img [src]="rec.img_url" (swipeleft)="onReject()" (swiperight)="onReject()" class="mx-auto d-block rounded img-fluid mt-4">
+          <img [src]="rec.img_url" (swipeleft)="onReject()" (swiperight)="onReject()" class="mx-auto d-block rounded img-fluid mt-2">
 
-          <div class="text-center mx-auto mt-4 col-sm-5 col-md-4">
+          <div class="text-center mx-auto mt-2 col-sm-5 col-md-4">
             {{ rec.plot }}
           </div>
 
-          <div class="d-flex justify-content-around mx-auto mt-4 col-sm-5 col-md-4">
+          <div class="d-flex justify-content-around mx-auto mt-2 col-sm-5 col-md-4">
             <button (click)="onAccept()" type="button" class="btn btn-outline-success">Accept</button>
             <button (click)="onReject()" type="button" class="btn btn-outline-danger">Reject</button>
           </div>
