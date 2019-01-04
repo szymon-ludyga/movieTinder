@@ -3,11 +3,7 @@ const uniqueValidator = require('mongoose-unique-validator');
 
 require('dotenv').config();
 
-// connect to database
-
 mongoose.connect(process.env.DB_URL);
-
-// defining a schema
 
 const movieSchema = new mongoose.Schema({
 	title: { type: String, required: true, unique: true },
@@ -17,11 +13,7 @@ const movieSchema = new mongoose.Schema({
 	votes: Number
 });
 
-// preventing from adding the same movie
-
 movieSchema.plugin(uniqueValidator);
-
-// defining a model
 
 const Movie = mongoose.model('Movie', movieSchema);
 

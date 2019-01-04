@@ -9,18 +9,17 @@ import { NgForm } from '@angular/forms';
 })
 export class MoviesComponent implements OnInit {
 
-  text: string = 'movies page';
+  text = 'movies page';
+
   movies: any = [];
 
   constructor(private moviesService: MoviesService) { }
 
 
   ngOnInit() {
-
     this.moviesService.getAllMovies().subscribe((movies) => {
       this.movies = movies;
     });
-
   }
 
   onAdd(form: NgForm) {

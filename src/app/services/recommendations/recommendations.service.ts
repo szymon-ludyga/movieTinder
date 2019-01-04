@@ -8,8 +8,8 @@ export class RecommendationsService {
 
   constructor(private http: HttpClient) { }
 
-  getAllRecommendations(){
-    return this.http.get('/recommendations').pipe(res => res, error => error);
+  getAllRecommendations() {
+    return this.http.get('/recommendations').pipe(data => data, error => error);
   }
 
   updateVotes(vote: number, id: string) {

@@ -4,20 +4,20 @@
 </form>
 
 <table *ngIf="movies.length > 0" class="table table-striped mt-5 col-12">
-    <thead>
-      <tr>
-        <th scope="col">Title</th>
-        <th scope="col">Votes</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let movie of movies">
-        <td>{{ movie.title }}</td>
-        <td>{{ movie.votes }}</td>
-        <td>
-          <button (click)="onDelete(movie._id)" class="btn btn-danger" title="Delete"><i class="fa fa-fw fa-trash"></i></button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Votes</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let movie of movies">
+      <td>{{ movie.title }}</td>
+      <td>{{ movie.votes }}</td>
+      <td>
+        <button (click)="onDelete(movie._id)" class="btn btn-danger" title="Delete"><i class="fa fa-fw fa-trash"></i></button>
+      </td>
+    </tr>
+  </tbody>
+</table>

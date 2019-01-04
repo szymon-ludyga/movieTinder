@@ -11,7 +11,7 @@ describe('SuccessComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SuccessComponent ],
-      imports: [ RouterTestingModule ] 
+      imports: [ RouterTestingModule ]
     })
     .compileComponents();
   }));
@@ -25,4 +25,9 @@ describe('SuccessComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have as text: "success page"', () => {
+    expect(component.text).toEqual('success page');
+  });
+
 });
