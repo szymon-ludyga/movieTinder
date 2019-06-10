@@ -14,13 +14,9 @@ interface AppState {
 
 @Component({
   selector: 'app-recommendations',
-  templateUrl: './recommendations.component.html',
-  styleUrls: ['./recommendations.component.css']
+  templateUrl: './recommendations.component.html'
 })
 export class RecommendationsComponent implements OnInit {
-
-  text = 'recommendations page';
-
   vote: Observable<Vote>;
   isLoading = false;
   isSwiped = true;

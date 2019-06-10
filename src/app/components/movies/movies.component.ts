@@ -4,13 +4,9 @@ import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-movies',
-  templateUrl: './movies.component.html',
-  styleUrls: ['./movies.component.css']
+  templateUrl: './movies.component.html'
 })
 export class MoviesComponent implements OnInit {
-
-  text = 'movies page';
-
   movies: any = [];
 
   constructor(private moviesService: MoviesService) { }

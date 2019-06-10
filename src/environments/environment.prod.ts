@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiUrl: 'https://mighty-stream-84035.herokuapp.com'
 };
