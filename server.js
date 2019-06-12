@@ -24,17 +24,17 @@ app.use("/", express.static(path.join(__dirname, "dist")));
 // });
 
 app.get("/recommendations", async (req, res, next) => {
-  let dataRec;
-  Movie.find({}, null, { sort: { votes: -1 } }, function(error, data) {
-    try {
-      if (error) throw error;
-      console.log(data);
-      res.send(data);
-    } catch (error) {
-      error.status = 500;
-      next(error);
-    }
-  });
+  Movie.find({}, null, { sort: { votes: -1 } }).then(data => res.send(data));
+  //   Movie.find({}, null, { sort: { votes: -1 } }, function(error, data) {
+  //     try {
+  //       if (error) throw error;
+  //       console.log(data);
+  //       res.send(data);
+  //     } catch (error) {
+  //       error.status = 500;
+  //       next(error);
+  //     }
+  //   });
 });
 
 app.get("/movies", function(req, res, next) {

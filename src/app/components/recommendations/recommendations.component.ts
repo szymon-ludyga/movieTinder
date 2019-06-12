@@ -23,20 +23,16 @@ export class RecommendationsComponent implements OnInit {
   voteCount = 0;
   movies: any;
 
-
   constructor(private recommendationsService: RecommendationsService, private store: Store<AppState>) {
     this.vote = this.store.select('vote');
   }
 
   ngOnInit() {
-
     this.isLoading = true;
     this.getMovies();
-
   }
 
   async getMovies() {
-
     this.movies = await this.recommendationsService.getAllRecommendations().toPromise();
     if (this.movies.length > 0) {
       this.store.dispatch(new VoteActions.ChangeMovie(
@@ -49,7 +45,6 @@ export class RecommendationsComponent implements OnInit {
   }
 
   getNextMovie() {
-
     this.store.dispatch(new VoteActions.ChangeMovie(
       this.movies[0].title,
       this.movies[0].img_url,
@@ -69,11 +64,9 @@ export class RecommendationsComponent implements OnInit {
     } else {
       this.getMovies();
     }
-
   }
 
   onReject() {
-
     this.isLoading = true;
     this.voteCount = -1;
     this.recommendationsService.updateVotes(this.voteCount, this.movies[0]._id);
@@ -83,7 +76,5 @@ export class RecommendationsComponent implements OnInit {
     } else {
       this.getMovies();
     }
-
   }
-
 }
